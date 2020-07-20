@@ -1,0 +1,34 @@
+/home/preddy5/anaconda2/lib/python2.7/site-packages/theano/configdefaults.py:1686: UserWarning: Theano does not recognise this flag: NanGuardMode
+  warnings.warn('Theano does not recognise this flag: {0}'.format(key))
+Using gpu device 0: Tesla K80 (CNMeM is disabled, CuDNN 3007)
+Using Theano backend.
+/home/preddy5/anaconda2/lib/python2.7/site-packages/theano/tensor/signal/downsample.py:5: UserWarning: downsample module has been moved to the pool module.
+  warnings.warn("downsample module has been moved to the pool module.")
+Error allocating 4510105600 bytes of device memory (out of memory). Driver report 2080047104 bytes free and 12079136768 bytes total 
+...............................................................................................................................................................................................................................................................................................................................................................................Epoch 1/5
+Traceback (most recent call last):
+  File "segnet.py", line 179, in <module>
+    show_accuracy=True, verbose=1, class_weight=class_weighting )#, validation_data=(X_test, X_test))
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/keras/models.py", line 646, in fit
+    shuffle=shuffle, metrics=metrics)
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/keras/models.py", line 280, in _fit
+    outs = f(ins_batch)
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/keras/backend/theano_backend.py", line 384, in __call__
+    return self.function(*inputs)
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/theano/compile/function_module.py", line 871, in __call__
+    storage_map=getattr(self.fn, 'storage_map', None))
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/theano/gof/link.py", line 314, in raise_with_op
+    reraise(exc_type, exc_value, exc_trace)
+  File "/home/preddy5/anaconda2/lib/python2.7/site-packages/theano/compile/function_module.py", line 859, in __call__
+    outputs = self.fn()
+MemoryError: Error allocating 4510105600 bytes of device memory (out of memory).
+Apply node that caused the error: GpuAlloc{memset_0=True}(CudaNdarrayConstant{0.0}, Elemwise{switch,no_inplace}.0, Elemwise{switch,no_inplace}.0, Elemwise{add,no_inplace}.0, TensorConstant{242})
+Toposort index: 469
+Inputs types: [CudaNdarrayType(float32, scalar), TensorType(int64, scalar), TensorType(int64, scalar), TensorType(int64, scalar), TensorType(int64, scalar)]
+Inputs shapes: [(), (), (), (), ()]
+Inputs strides: [(), (), (), (), ()]
+Inputs values: [CudaNdarray(0.0), array(100), array(256), array(182), array(242)]
+Outputs clients: [[GpuIncSubtensor{InplaceSet;::, ::, int64:int64:, int64:int64:}(GpuAlloc{memset_0=True}.0, GpuReshape{4}.0, Constant{1}, ScalarFromTensor.0, Constant{1}, Constant{241})]]
+
+HINT: Re-running with most Theano optimization disabled could give you a back-trace of when this node was created. This can be done with by setting the Theano flag 'optimizer=fast_compile'. If that does not work, Theano optimizations can be disabled with 'optimizer=None'.
+HINT: Use the Theano flag 'exception_verbosity=high' for a debugprint and storage map footprint of this apply node.
